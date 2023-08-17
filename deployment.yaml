@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dock-image
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dock-image
+  template:
+    metadata:
+      labels:
+        app: dock-image
+    spec:
+      containers:
+        - name: dock-image
+          image: dock-image:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
+
